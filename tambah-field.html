@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Field Input JavaScript</title>
+
+    <!-- CDN CSS BOOTSTRAP 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="card" style="width: 400px">
+        <div class="card-header">Form Input</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nama"
+              placeholder="Nama Anda"
+            />
+          </div>
+          <div class="mb-3" id="opsi-hobi">
+            <label for="hobi" class="form-label">Hobi</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="hobi[]"
+              placeholder="Masukan hobi Anda"
+            />
+          </div>
+          <button class="btn btn-primary btn-sm mt-2" id="tambah-hobi">
+            Add Field
+          </button>
+          <button class="btn btn-danger btn-sm mt-2" id="hapus-hobi">
+            Remove Field
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let optionHobi = document.getElementById("opsi-hobi");
+      let addHobi = document.getElementById("tambah-hobi");
+      let removeHobi = document.getElementById("hapus-hobi");
+
+      addHobi.onclick = function () {
+        let input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("name", "nama[]");
+        input.setAttribute("class", "form-control mb-2");
+        input.setAttribute("placeholder", "Hobi lainnya");
+        optionHobi.appendChild(input);
+      };
+
+      removeHobi.onclick = function () {
+        let input_tags = optionHobi.getElementsByTagName("input");
+        if (input_tags.length > 1) {
+          optionHobi.removeChild(input_tags[input_tags.length - 1]);
+        }
+      };
+    </script>
+  </body>
+</html>
